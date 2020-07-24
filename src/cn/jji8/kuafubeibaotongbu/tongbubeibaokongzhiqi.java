@@ -10,7 +10,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
 
-public class wanjiakongzi  implements Listener {
+public class tongbubeibaokongzhiqi implements Listener {
     @EventHandler
     public void wanjianjingru(PlayerJoinEvent a){//玩家进入时等待其他服务器解锁，然后加锁，加载背包
         if(main.peizi.进入服务器后清空背包){
@@ -24,7 +24,7 @@ public class wanjiakongzi  implements Listener {
         Thread Thread = new Thread(){
             @Override
             public void run() {
-                for(;io.ifshuo(a.getPlayer().getName());){
+                while(io.ifshuo(a.getPlayer().getName())){
                     try {
                         sleep(main.peizi.判读锁间隔);
                     } catch (InterruptedException e) {
