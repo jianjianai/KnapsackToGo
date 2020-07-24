@@ -1,6 +1,7 @@
-package cn.jji8.kuafubeibaotongbu;
+package cn.jji8.kuafubeibaotongbu.kongzhiqi;
 
 import cn.jji8.kuafubeibaotongbu.io.io;
+import cn.jji8.kuafubeibaotongbu.main;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
