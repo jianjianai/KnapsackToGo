@@ -22,7 +22,7 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
         if(main.peizi.背包加载前旁观者模式){
             a.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
-        if(main.peizi.后台显示更多信息){Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");}
+        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");
         main.wanjiabiao.add(a.getPlayer().getName());
         Thread Thread = new Thread(){
             @Override
@@ -53,7 +53,7 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
     }
     @EventHandler
     public void wanjialikai(PlayerQuitEvent a){
-        if(main.peizi.后台显示更多信息){Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"离开");}
+        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"离开");
         if(main.wanjiabiao.contains(a.getPlayer().getName())){
             io.jieshuo(a.getPlayer().getName());
             return;
