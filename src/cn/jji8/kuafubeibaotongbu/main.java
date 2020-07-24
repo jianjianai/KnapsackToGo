@@ -36,8 +36,10 @@ public class main extends JavaPlugin{
         Bukkit.getPluginCommand("保存背包").setExecutor(new bcbb());
         Bukkit.getPluginCommand("加载背包").setExecutor(new jzbb());
         Bukkit.getPluginCommand("解锁").setExecutor(new jiesuo());
-        //注册控制器
 
+
+        //注册控制器
+        //注册同步背包控制器
         if(peizi.同步背包){
             tongbubeibaokongzhiqi tongbubeibaokongzhiqi = new tongbubeibaokongzhiqi();
             Bukkit.getPluginManager().registerEvents(tongbubeibaokongzhiqi,this);

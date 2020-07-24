@@ -8,7 +8,7 @@ import org.bukkit.inventory.PlayerInventory;
 import java.io.File;
 import java.io.IOException;
 
-public class io {
+public class io {//我专门负责读写操作
     public static void jiazaibeibao(Player wanjia){//用于加载玩家背包
         long startTime = System.currentTimeMillis();
         File File = new File(main.peizi.工作路径 + "/背包/" + wanjia.getName()+".yml");

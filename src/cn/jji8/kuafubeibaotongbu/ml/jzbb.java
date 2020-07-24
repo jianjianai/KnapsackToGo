@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class jzbb implements CommandExecutor {//我是保存背包命令执行器啦啦啦
+public class jzbb implements CommandExecutor {//我是加载背包命令执行器啦啦啦
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
