@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1312eb1-a59e-4954-9cc3-4d518df2070d" name="默认更改列表" comment="" />
+    <list default="true" id="4a42657c-b862-444b-b0d6-ac6b5cf75403" name="默认更改列表" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,11 +11,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1f88UcuzchjcKAzEenukrvYjDl6" />
+  <component name="ProjectId" id="1f88y0psZZ5aVajkt4hawPNEou5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spigot-1.16.1_2.jar!/" />
+    <property name="project.structure.last.edited" value="模块" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -34,12 +38,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c1312eb1-a59e-4954-9cc3-4d518df2070d" name="默认更改列表" comment="" />
-      <created>1595588375130</created>
+      <changelist id="4a42657c-b862-444b-b0d6-ac6b5cf75403" name="默认更改列表" comment="" />
+      <created>1595588610010</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1595588375130</updated>
-      <workItem from="1595588376779" duration="111000" />
+      <updated>1595588610010</updated>
+      <workItem from="1595588612832" duration="77000" />
     </task>
     <servers />
   </component>

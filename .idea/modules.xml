@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/KnapsackToGo.iml" filepath="$PROJECT_DIR$/.idea/KnapsackToGo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KnapsackToGo.iml" filepath="$PROJECT_DIR$/KnapsackToGo.iml" />
     </modules>
   </component>
 </project>
