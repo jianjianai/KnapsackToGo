@@ -14,7 +14,12 @@ public class jzbb implements CommandExecutor {//我是加载背包命令执行�
             commandSender.sendMessage("此命令只有玩家可以使用");
             return true;
         }
-        Thread T = new Thread(() -> io.jiazaibeibao((Player) commandSender));
+        Thread T = new Thread(){
+            @Override
+            public void run() {
+                io.jiazaibeibao((Player) commandSender);
+            }
+        };
         T.start();
         return true;
     }

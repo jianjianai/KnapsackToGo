@@ -14,7 +14,12 @@ public class bcbb implements CommandExecutor {//我是保存背包命令执行�
             commandSender.sendMessage("此命令只有玩家可以使用");
             return true;
         }
-        Thread T = new Thread(() -> io.baocunbeobao((Player) commandSender));
+        Thread T = new Thread(){
+            @Override
+            public void run() {
+                io.baocunbeobao((Player) commandSender);
+            }
+        };
         T.start();
         return true;
     }
