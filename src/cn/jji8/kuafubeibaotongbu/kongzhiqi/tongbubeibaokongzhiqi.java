@@ -2,6 +2,8 @@ package cn.jji8.kuafubeibaotongbu.kongzhiqi;
 
 import cn.jji8.kuafubeibaotongbu.io.io;
 import cn.jji8.kuafubeibaotongbu.main;
+import org.apache.logging.log4j.core.util.JsonUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,7 +13,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
 
-public class tongbubeibaokongzhiqi implements Listener {
+public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控制器啦啦啦啦
     @EventHandler
     public void wanjianjingru(PlayerJoinEvent a){//玩家进入时等待其他服务器解锁，然后加锁，加载背包
         if(main.peizi.进入服务器后清空背包){
@@ -20,7 +22,7 @@ public class tongbubeibaokongzhiqi implements Listener {
         if(main.peizi.背包加载前旁观者模式){
             a.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
-        System.out.println("[跨服背包同步]:玩家进入");
+        if(main.peizi.后台显示更多信息){Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");}
         main.wanjiabiao.add(a.getPlayer().getName());
         Thread Thread = new Thread(){
             @Override
@@ -30,7 +32,7 @@ public class tongbubeibaokongzhiqi implements Listener {
                         sleep(main.peizi.判读锁间隔);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                        System.out.println("[跨服背包同步]:判读锁间隔因为不可抗拒的原因被提前了。");
+                        Bukkit.getLogger().warning("[跨服背包同步]:判读锁间隔因为不可抗拒的原因被提前了。");
                     }
                 }
                 io.jiashuo(a.getPlayer().getName());
@@ -51,7 +53,7 @@ public class tongbubeibaokongzhiqi implements Listener {
     }
     @EventHandler
     public void wanjialikai(PlayerQuitEvent a){
-        System.out.println("[跨服背包同步]:玩家离开");
+        if(main.peizi.后台显示更多信息){Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"离开");}
         if(main.wanjiabiao.contains(a.getPlayer().getName())){
             io.jieshuo(a.getPlayer().getName());
             return;

@@ -20,8 +20,8 @@ public class main extends JavaPlugin{
     public void onEnable(){
         main = this;
 
-        System.out.println("[跨服背包同步]:作者:简简爱");
-        System.out.println("[跨服背包同步]:开始初始化");
+        Bukkit.getLogger().info("[跨服背包同步]:作者:简简爱");
+        Bukkit.getLogger().info("[跨服背包同步]:开始初始化");
 
 
         //加载配置
@@ -29,17 +29,17 @@ public class main extends JavaPlugin{
             peizi = new peizi();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("[跨服背包同步]:配置无法加载，工作路径是否存在！");
+            Bukkit.getLogger().info("[跨服背包同步]:配置无法加载，工作路径是否存在！");
         }
-        System.out.println("[跨服背包同步]:工作路径是："+peizi.工作路径);
+        Bukkit.getLogger().info("[跨服背包同步]:工作路径是："+peizi.工作路径);
+
         //注册命令
         Bukkit.getPluginCommand("保存背包").setExecutor(new bcbb());
         Bukkit.getPluginCommand("加载背包").setExecutor(new jzbb());
         Bukkit.getPluginCommand("解锁").setExecutor(new jiesuo());
 
-
         //注册控制器
-        //注册同步背包控制器
+        //同步背包控制器
         if(peizi.同步背包){
             tongbubeibaokongzhiqi tongbubeibaokongzhiqi = new tongbubeibaokongzhiqi();
             Bukkit.getPluginManager().registerEvents(tongbubeibaokongzhiqi,this);
@@ -47,7 +47,7 @@ public class main extends JavaPlugin{
 
 
 
-        System.out.println("[跨服背包同步]:初始化完成");
+        Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
     }
 }
 
