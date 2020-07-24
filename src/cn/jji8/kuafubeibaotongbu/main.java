@@ -2,6 +2,7 @@ package cn.jji8.kuafubeibaotongbu;
 
 
 import cn.jji8.kuafubeibaotongbu.ml.bcbb;
+import cn.jji8.kuafubeibaotongbu.ml.jiesuo;
 import cn.jji8.kuafubeibaotongbu.ml.jzbb;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +30,7 @@ public class main extends JavaPlugin{
         System.out.println("[跨服背包同步]:工作路径是："+peizi.工作路径);
         Bukkit.getPluginCommand("保存背包").setExecutor(new bcbb());
         Bukkit.getPluginCommand("加载背包").setExecutor(new jzbb());
+        Bukkit.getPluginCommand("解锁").setExecutor(new jiesuo());
 
         wanjiakongzi wanjiakongzi = new wanjiakongzi();
         Bukkit.getPluginManager().registerEvents(wanjiakongzi,this);

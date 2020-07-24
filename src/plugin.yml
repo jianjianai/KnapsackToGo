@@ -16,3 +16,9 @@ commands:
     permission: 跨服背包.加载背包
     permission-message: "你没有权限执行此命令"
     usage: /<command>
+  解锁:
+    aliases: [js, jiesuo]
+    description: "加载背包的命令"
+    permission: 跨服背包.解锁
+    permission-message: "你没有权限执行此命令"
+    usage: /<command> 玩家名
