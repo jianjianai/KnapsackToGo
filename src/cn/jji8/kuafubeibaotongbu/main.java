@@ -10,16 +10,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
 
 
-public class main extends JavaPlugin {
-    public static main main;
-    public static peizi peizi;
-    public static ArrayList wanjiabiao = new ArrayList();
-    private final Lock lock = new bblock();
+public class main extends JavaPlugin{
+   public static main main;
+   public static peizi peizi;
+   public static ArrayList wanjiabiao = new ArrayList();
 
-    public void onEnable() {
+    public void onEnable(){
         main = this;
 
         Bukkit.getLogger().info("[跨服背包同步]:作者:简简爱");
