@@ -2,6 +2,8 @@ package cn.jji8.kuafubeibaotongbu.kongzhiqi;
 
 import cn.jji8.kuafubeibaotongbu.io.io;
 import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.kuafubeibaotongbu.shijian.beibaobaocun;
+import cn.jji8.kuafubeibaotongbu.shijian.beibaojiazai;
 import org.apache.logging.log4j.core.util.JsonUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -36,6 +38,15 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
                     }
                 }
                 io.jiashuo(a.getPlayer().getName());
+
+                //处理背包加载事件
+                beibaojiazai beibaojiazai = new beibaojiazai(a.getPlayer());
+                Bukkit.getServer().getPluginManager().callEvent(beibaojiazai);
+                if(beibaojiazai.isCancelled()) {
+                    io.jieshuo(a.getPlayer().getName());//事件被取消，就解锁
+                    return;
+                }
+
                 io.jiazaibeibao(a.getPlayer());
                 main.wanjiabiao.remove(a.getPlayer().getName());
                 if(main.peizi.背包加载前旁观者模式){
@@ -66,6 +77,9 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
             }
         };
         T.start();
+        //处理背包保存事件
+        beibaobaocun beibaobaocun = new beibaobaocun(a.getPlayer());
+        Bukkit.getServer().getPluginManager().callEvent(beibaobaocun);
     }
 
 
