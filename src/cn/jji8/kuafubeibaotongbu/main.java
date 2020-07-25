@@ -1,10 +1,10 @@
 package cn.jji8.kuafubeibaotongbu;
 
 
-import cn.jji8.kuafubeibaotongbu.kongzhiqi.*;
 import cn.jji8.kuafubeibaotongbu.ml.bcbb;
 import cn.jji8.kuafubeibaotongbu.ml.jiesuo;
 import cn.jji8.kuafubeibaotongbu.ml.jzbb;
+import cn.jji8.kuafubeibaotongbu.test.heal;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,22 +40,24 @@ public class main extends JavaPlugin {
         Bukkit.getPluginCommand("加载背包").setExecutor(new jzbb());
         Bukkit.getPluginCommand("解锁").setExecutor(new jiesuo());
 
+        Bukkit.getPluginManager().registerEvents(new heal(),this);
+
         //注册控制器
         //同步背包控制器
-        if(peizi.同步背包){
-            Bukkit.getLogger().info("[跨服背包同步]:同步背包开启");
-            tongbubeibaokongzhiqi tongbubeibaokongzhiqi = new tongbubeibaokongzhiqi();
-            Bukkit.getPluginManager().registerEvents(tongbubeibaokongzhiqi,this);
-        }
-        if(!peizi.同步背包){ Bukkit.getLogger().info("[跨服背包同步]:同步背包未开启，血量饱食度同步将无效"); }
-
-        //同步血量饱食度控制器
-        if(peizi.同步血量饱食度){
-            Bukkit.getLogger().info("[跨服背包同步]:同步血量饱食度开启");
-            xueliangbaoshidukongzhiqi xueliangbaoshidukongzhiqi = new xueliangbaoshidukongzhiqi();
-            Bukkit.getPluginManager().registerEvents(xueliangbaoshidukongzhiqi,this);
-        }
-        Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
+//        if(peizi.同步背包){
+//            Bukkit.getLogger().info("[跨服背包同步]:同步背包开启");
+//            tongbubeibaokongzhiqi tongbubeibaokongzhiqi = new tongbubeibaokongzhiqi();
+//            Bukkit.getPluginManager().registerEvents(tongbubeibaokongzhiqi,this);
+//        }
+//        if(!peizi.同步背包){ Bukkit.getLogger().info("[跨服背包同步]:同步背包未开启，血量饱食度同步将无效"); }
+//
+//        //同步血量饱食度控制器
+//        if(peizi.同步血量饱食度){
+//            Bukkit.getLogger().info("[跨服背包同步]:同步血量饱食度开启");
+//            xueliangbaoshidukongzhiqi xueliangbaoshidukongzhiqi = new xueliangbaoshidukongzhiqi();
+//            Bukkit.getPluginManager().registerEvents(xueliangbaoshidukongzhiqi,this);
+//        }
+//        Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
     }
 }
 
