@@ -1,10 +1,7 @@
 package cn.jji8.kuafubeibaotongbu.kongzhiqi;
 
-import cn.jji8.kuafubeibaotongbu.io.io;
+import cn.jji8.kuafubeibaotongbu.diaoduqi.iodiaodu;
 import cn.jji8.kuafubeibaotongbu.main;
-import cn.jji8.kuafubeibaotongbu.shijian.beibaobaocun;
-import cn.jji8.kuafubeibaotongbu.shijian.beibaojiazai;
-import org.apache.logging.log4j.core.util.JsonUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
@@ -14,8 +11,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.scheduler.BukkitRunnable;
 
-
-public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控制器啦啦啦啦
+public class suokongziqi implements Listener {
     @EventHandler
     public void wanjianjingru(PlayerJoinEvent a){//玩家进入时等待其他服务器解锁，然后加锁，加载背包
         if(main.peizi.进入服务器后清空背包){
@@ -24,12 +20,12 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
         if(main.peizi.背包加载前旁观者模式){
             a.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
-        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");
+        if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");
         main.wanjiabiao.add(a.getPlayer().getName());
         Thread Thread = new Thread(){
             @Override
             public void run() {
-                while(io.ifshuo(a.getPlayer().getName())){
+                while(suoio.ifshuo(a.getPlayer().getName())){
                     try {
                         sleep(main.peizi.判读锁间隔);
                     } catch (InterruptedException e) {
@@ -37,18 +33,8 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
                         Bukkit.getLogger().warning("[跨服背包同步]:判读锁间隔因为不可抗拒的原因被提前了。");
                     }
                 }
-                io.jiashuo(a.getPlayer().getName());
-
-                BukkitRunnable BukkitRunnable1 = new BukkitRunnable(){//创建一个任务
-                    @Override
-                    public void run() {
-                        //处理背包加载事件
-                        beibaojiazai beibaojiazai = new beibaojiazai(a.getPlayer());
-                        Bukkit.getServer().getPluginManager().callEvent(beibaojiazai);
-                    }
-                };
-                BukkitRunnable1.runTask(main.main);
-                io.jiazaibeibao(a.getPlayer());
+                suoio.jiashuo(a.getPlayer().getName());
+                iodiaodu.jiazai(a.getPlayer());//加载
                 main.wanjiabiao.remove(a.getPlayer().getName());
                 if(main.peizi.背包加载前旁观者模式){
                     BukkitRunnable BukkitRunnable = new BukkitRunnable(){
@@ -67,20 +53,17 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
     public void wanjialikai(PlayerQuitEvent a){
         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"离开");
         if(main.wanjiabiao.contains(a.getPlayer().getName())){
-            io.jieshuo(a.getPlayer().getName());
+            suoio.jieshuo(a.getPlayer().getName());
             return;
         }
         Thread T = new Thread(){
             @Override
             public void run() {
-                io.baocunbeobao(a.getPlayer());
-                io.jieshuo(a.getPlayer().getName());
+                iodiaodu.baocun(a.getPlayer());//保存
+                suoio.jieshuo(a.getPlayer().getName());
             }
         };
         T.start();
-        //处理背包保存事件
-        beibaobaocun beibaobaocun = new beibaobaocun(a.getPlayer());
-        Bukkit.getServer().getPluginManager().callEvent(beibaobaocun);
     }
 
 
