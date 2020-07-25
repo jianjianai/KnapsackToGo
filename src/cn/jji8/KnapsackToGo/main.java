@@ -1,13 +1,13 @@
-package cn.jji8.kuafubeibaotongbu;
+package cn.jji8.KnapsackToGo;
 
 
-import cn.jji8.kuafubeibaotongbu.diaoduqi.io.beibao;
-import cn.jji8.kuafubeibaotongbu.diaoduqi.io.xueliangbaoshidu;
-import cn.jji8.kuafubeibaotongbu.diaoduqi.iodiaodu;
-import cn.jji8.kuafubeibaotongbu.kongzhiqi.suokongziqi;
-import cn.jji8.kuafubeibaotongbu.ml.bcbb;
-import cn.jji8.kuafubeibaotongbu.ml.jiesuo;
-import cn.jji8.kuafubeibaotongbu.ml.jzbb;
+import cn.jji8.KnapsackToGo.diaoduqi.io.beibao;
+import cn.jji8.KnapsackToGo.diaoduqi.io.xueliangbaoshidu;
+import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
+import cn.jji8.KnapsackToGo.kongzhiqi.suokongziqi;
+import cn.jji8.KnapsackToGo.ml.bcbb;
+import cn.jji8.KnapsackToGo.ml.jiesuo;
+import cn.jji8.KnapsackToGo.ml.jzbb;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

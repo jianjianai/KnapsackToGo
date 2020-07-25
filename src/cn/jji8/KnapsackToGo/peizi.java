@@ -1,4 +1,4 @@
-package cn.jji8.kuafubeibaotongbu;
+package cn.jji8.KnapsackToGo;
 
 import org.bukkit.GameMode;
 import org.bukkit.configuration.file.YamlConfiguration;

@@ -1,6 +1,6 @@
-package cn.jji8.kuafubeibaotongbu.diaoduqi.io;
+package cn.jji8.KnapsackToGo.diaoduqi.io;
 
-import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.KnapsackToGo.main;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

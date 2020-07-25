@@ -1,7 +1,7 @@
-package cn.jji8.kuafubeibaotongbu.kongzhiqi;
+package cn.jji8.KnapsackToGo.kongzhiqi;
 
-import cn.jji8.kuafubeibaotongbu.diaoduqi.iodiaodu;
-import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
+import cn.jji8.KnapsackToGo.main;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;

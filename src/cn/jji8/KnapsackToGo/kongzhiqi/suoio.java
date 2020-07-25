@@ -1,10 +1,8 @@
-package cn.jji8.kuafubeibaotongbu.kongzhiqi;
+package cn.jji8.KnapsackToGo.kongzhiqi;
 
-import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.KnapsackToGo.main;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 
 import java.io.File;
 import java.io.IOException;
