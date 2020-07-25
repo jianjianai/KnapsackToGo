@@ -18,13 +18,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控制器啦啦啦啦
     @EventHandler
     public void wanjianjingru(PlayerJoinEvent a){//玩家进入时等待其他服务器解锁，然后加锁，加载背包
-        if (main.peizi.进入服务器后清空背包) {
+        if(main.peizi.进入服务器后清空背包){
             a.getPlayer().getInventory().clear();
         }
-        if (main.peizi.背包加载前旁观者模式) {
+        if(main.peizi.背包加载前旁观者模式){
             a.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
-        if (main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:玩家" + a.getPlayer().getName() + "进入");
+        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");
         main.wanjiabiao.add(a.getPlayer().getName());
         Thread Thread = new Thread(){
             @Override
@@ -57,28 +57,9 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
                         }
                     };
                     BukkitRunnable.runTask(main.main);
-        Thread Thread = new Thread(() -> {
-            while (io.ifshuo(a.getPlayer().getName())) {
-                try {
-                    java.lang.Thread.sleep(main.peizi.判读锁间隔);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    Bukkit.getLogger().warning("[跨服背包同步]:判读锁间隔因为不可抗拒的原因被提前了。");
                 }
             }
-            io.jiashuo(a.getPlayer().getName());
-            io.jiazaibeibao(a.getPlayer());
-            main.wanjiabiao.remove(a.getPlayer().getName());
-            if (main.peizi.背包加载前旁观者模式) {
-                BukkitRunnable BukkitRunnable = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        a.getPlayer().setGameMode(main.peizi.服务器游戏模式);
-                    }
-                };
-                BukkitRunnable.runTask(main.main);
-            }
-        });
+        };
         Thread.start();
     }
     @EventHandler
