@@ -77,13 +77,6 @@ public class suokongziqi implements Listener {
         }
     }
     @EventHandler
-    public void wanjiachuanshong(PlayerTeleportEvent a) {//玩家传送时
-        if(main.wanjiabiao.contains(a.getPlayer().getName())){
-            a.setCancelled(true);
-            a.getPlayer().sendTitle(main.peizi.加载标题1.replaceAll("%玩家%",a.getPlayer().getName()),main.peizi.加载标题2.replaceAll("%玩家%",a.getPlayer().getName()),10,40,10);
-        }
-    }
-    @EventHandler
     public void WanJiaDiuWuPing(PlayerDropItemEvent a){//玩家丢物品
         if(main.wanjiabiao.contains(a.getPlayer().getName())){
             a.setCancelled(true);
