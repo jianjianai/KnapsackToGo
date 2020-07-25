@@ -1,6 +1,7 @@
 package cn.jji8.kuafubeibaotongbu.ml;
 
-import cn.jji8.kuafubeibaotongbu.io.io;
+import cn.jji8.kuafubeibaotongbu.diaoduqi.iodiaodu;
+import cn.jji8.kuafubeibaotongbu.kongzhiqi.suoio;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,7 +15,7 @@ public class jzbb implements CommandExecutor {//我是加载背包命令执行�
             commandSender.sendMessage("此命令只有玩家可以使用");
             return true;
         }
-        Thread T = new Thread(() -> io.jiazaibeibao((Player) commandSender));
+        Thread T = new Thread(() -> iodiaodu.jiazai((Player) commandSender));
         T.start();
         return true;
     }

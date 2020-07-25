@@ -1,6 +1,6 @@
 package cn.jji8.kuafubeibaotongbu.ml;
 
-import cn.jji8.kuafubeibaotongbu.io.io;
+import cn.jji8.kuafubeibaotongbu.kongzhiqi.suoio;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,7 +11,7 @@ public class jiesuo implements CommandExecutor {//我是解锁命令执行器啦
         if(strings.length==0){
             return false;
         }
-        Thread T = new Thread(() -> io.jieshuo(strings[0]));
+        Thread T = new Thread(() -> suoio.jieshuo(strings[0]));
         T.start();
         return true;
     }
