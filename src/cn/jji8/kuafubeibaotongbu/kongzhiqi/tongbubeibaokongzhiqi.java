@@ -45,14 +45,9 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
                         //处理背包加载事件
                         beibaojiazai beibaojiazai = new beibaojiazai(a.getPlayer());
                         Bukkit.getServer().getPluginManager().callEvent(beibaojiazai);
-                        if(beibaojiazai.isCancelled()) {
-                            io.jieshuo(a.getPlayer().getName());//事件被取消，就解锁
-                            return;
-                        }
                     }
                 };
                 BukkitRunnable1.runTask(main.main);
-
                 io.jiazaibeibao(a.getPlayer());
                 main.wanjiabiao.remove(a.getPlayer().getName());
                 if(main.peizi.背包加载前旁观者模式){
