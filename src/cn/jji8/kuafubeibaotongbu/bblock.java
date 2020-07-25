@@ -15,6 +15,9 @@ public class bblock implements Lock {
     // 进程的执行体
     @Override
     public synchronized void lock() {
+        if (Thread.currentThread().getName() == "测试类"){
+            isLocked = true;
+        }
         while (isLocked) {
             try {
                 // 通知线程，等！
@@ -29,6 +32,7 @@ public class bblock implements Lock {
         runningThread = Thread.currentThread();
         // 计数自增。
         count++;
+        System.out.println("当前进入次数:"+count+" 线程ID:"+runningThread.getId()+" 线程名:"+runningThread.getName());
     }
 
     @Override
@@ -65,5 +69,8 @@ public class bblock implements Lock {
     @Override
     public Condition newCondition() {
         return null;
+    }
+    public boolean isLocked(){
+        return isLocked;
     }
 }
