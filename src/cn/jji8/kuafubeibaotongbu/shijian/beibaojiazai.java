@@ -5,7 +5,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class beibaojiazai extends Event implements Cancellable {//背包加载事件
+public class beibaojiazai extends Event {//背包加载事件
     private static final HandlerList handlers = new HandlerList();
     boolean isCancelled = false;
     Player Player;
@@ -15,16 +15,6 @@ public class beibaojiazai extends Event implements Cancellable {//背包加载�
     public Player getPlayer(){
         return Player;
     }
-    @Override
-    public boolean isCancelled() {
-        return isCancelled;
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-        isCancelled = b;
-    }
-
     @Override
     public HandlerList getHandlers() {
         return handlers;
