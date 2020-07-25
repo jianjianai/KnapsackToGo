@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class peizi {//我是专门负责读取配置的啦
     public String 工作路径,加载标题1,加载标题2;
-    public boolean 同步背包,背包加载前旁观者模式,进入服务器后清空背包,后台显示更多信息;
+    public boolean 同步背包,背包加载前旁观者模式,进入服务器后清空背包,后台显示更多信息,同步血量饱食度;
     public int 判读锁间隔;
     public GameMode 服务器游戏模式;
     peizi() throws IOException {
@@ -23,6 +23,13 @@ public class peizi {//我是专门负责读取配置的啦
         }else {
             b.set("同步背包",true);
             同步背包 = true;
+            b.save(File);
+        }
+        if(b.contains("同步血量饱食度")){
+            同步血量饱食度 = b.getBoolean("同步血量饱食度");
+        }else {
+            b.set("同步血量饱食度",true);
+            同步血量饱食度 = true;
             b.save(File);
         }
         if(b.contains("判读锁间隔")){

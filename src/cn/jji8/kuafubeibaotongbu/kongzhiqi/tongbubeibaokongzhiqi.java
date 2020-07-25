@@ -2,6 +2,9 @@ package cn.jji8.kuafubeibaotongbu.kongzhiqi;
 
 import cn.jji8.kuafubeibaotongbu.io.io;
 import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.kuafubeibaotongbu.shijian.beibaobaocun;
+import cn.jji8.kuafubeibaotongbu.shijian.beibaojiazai;
+import org.apache.logging.log4j.core.util.JsonUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
@@ -23,6 +26,37 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
         }
         if (main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:玩家" + a.getPlayer().getName() + "进入");
         main.wanjiabiao.add(a.getPlayer().getName());
+        Thread Thread = new Thread(){
+            @Override
+            public void run() {
+                while(io.ifshuo(a.getPlayer().getName())){
+                    try {
+                        sleep(main.peizi.判读锁间隔);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        Bukkit.getLogger().warning("[跨服背包同步]:判读锁间隔因为不可抗拒的原因被提前了。");
+                    }
+                }
+                io.jiashuo(a.getPlayer().getName());
+
+                //处理背包加载事件
+                beibaojiazai beibaojiazai = new beibaojiazai(a.getPlayer());
+                Bukkit.getServer().getPluginManager().callEvent(beibaojiazai);
+                if(beibaojiazai.isCancelled()) {
+                    io.jieshuo(a.getPlayer().getName());//事件被取消，就解锁
+                    return;
+                }
+
+                io.jiazaibeibao(a.getPlayer());
+                main.wanjiabiao.remove(a.getPlayer().getName());
+                if(main.peizi.背包加载前旁观者模式){
+                    BukkitRunnable BukkitRunnable = new BukkitRunnable(){
+                        @Override
+                        public void run() {
+                            a.getPlayer().setGameMode(main.peizi.服务器游戏模式);
+                        }
+                    };
+                    BukkitRunnable.runTask(main.main);
         Thread Thread = new Thread(() -> {
             while (io.ifshuo(a.getPlayer().getName())) {
                 try {
@@ -62,6 +96,9 @@ public class tongbubeibaokongzhiqi implements Listener {//我是同步背包控�
             }
         };
         T.start();
+        //处理背包保存事件
+        beibaobaocun beibaobaocun = new beibaobaocun(a.getPlayer());
+        Bukkit.getServer().getPluginManager().callEvent(beibaobaocun);
     }
 
 
