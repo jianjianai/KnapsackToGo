@@ -15,11 +15,9 @@ public class bblock implements Lock {
     // 进程的执行体
     @Override
     public synchronized void lock() {
-        if (Thread.currentThread().getName() == "测试类"){
-            isLocked = true;
-        }
         while (isLocked) {
             try {
+                System.out.println("正在等待线程...");
                 // 通知线程，等！
                 wait();
             } catch (Exception e) {
