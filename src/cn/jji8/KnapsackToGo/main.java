@@ -3,6 +3,7 @@ package cn.jji8.KnapsackToGo;
 
 import cn.jji8.KnapsackToGo.diaoduqi.io.beibao;
 import cn.jji8.KnapsackToGo.diaoduqi.io.xueliangbaoshidu;
+import cn.jji8.KnapsackToGo.diaoduqi.io.yaosui;
 import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
 import cn.jji8.KnapsackToGo.kongzhiqi.suokongziqi;
 import cn.jji8.KnapsackToGo.ml.bcbb;
@@ -55,6 +56,11 @@ public class main extends JavaPlugin {
             xueliangbaoshidu xueliangbaoshidu = new xueliangbaoshidu();
             iodiaodu.addio(xueliangbaoshidu);
             Bukkit.getLogger().info("[跨服背包同步]:同步血量饱食度开启");
+        }
+        if(peizi.同步药水效果){
+            yaosui yaosui = new yaosui();
+            iodiaodu.addio(yaosui);
+            Bukkit.getLogger().info("[跨服背包同步]:同步药水效果开启");
         }
         Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
     }
