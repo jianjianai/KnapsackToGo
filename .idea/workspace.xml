@@ -25,10 +25,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a42657c-b862-444b-b0d6-ac6b5cf75403" name="默认更改列表" comment="添加了两个测试类，目前还没有完成功能测试。">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/jji8/kuafubeibaotongbu/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/jji8/kuafubeibaotongbu/main.java" afterDir="false" />
-    </list>
+    <list default="true" id="4a42657c-b862-444b-b0d6-ac6b5cf75403" name="默认更改列表" comment="添加了两个测试类，目前还没有完成功能测试。" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,9 +51,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1f88y0psZZ5aVajkt4hawPNEou5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="新增" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,7 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spigot-1.16.1_2.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../[迷离任务]MiniTask" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -81,6 +77,18 @@
       <recent name="cn.jji8.kuafubeibaotongbu.test" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -94,6 +102,7 @@
       <workItem from="1595588612832" duration="164000" />
       <workItem from="1595589510883" duration="2030000" />
       <workItem from="1595656412713" duration="10552000" />
+      <workItem from="1595838845372" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="添加了两个测试类，目前还没有完成功能测试。">
       <created>1595666102858</created>
@@ -106,7 +115,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -125,12 +134,12 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加了两个测试类，目前还没有完成功能测试。" />
