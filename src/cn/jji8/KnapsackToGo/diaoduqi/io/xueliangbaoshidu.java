@@ -17,9 +17,15 @@ public class xueliangbaoshidu implements io{
         long startTime = System.currentTimeMillis();
         File File = new File(main.peizi.工作路径 + "/血量饱食度/" + wanjia.getName()+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
-        wanjia.setFoodLevel(wanjiawenjian.getInt("饥饿度"));
-        wanjia.setSaturation((float)wanjiawenjian.getDouble("饱食度"));
-        wanjia.setHealth(wanjiawenjian.getDouble("血量"));
+        if(wanjiawenjian.contains("饥饿度")){
+            wanjia.setFoodLevel(wanjiawenjian.getInt("饥饿度"));
+        }
+        if(wanjiawenjian.contains("饥饿度")){
+            wanjia.setSaturation((float)wanjiawenjian.getDouble("饱食度"));
+        }
+        if(wanjiawenjian.contains("饥饿度")){
+            wanjia.setHealth(wanjiawenjian.getDouble("血量"));
+        }
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:血量饱食度加载用时间： "+(endTime-startTime)+"ns");
     }
