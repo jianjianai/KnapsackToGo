@@ -78,11 +78,10 @@ public class main extends JavaPlugin {
                 public void run() {
                     Bukkit.getLogger().info("[跨服背包同步]:自动保存开启，自动保存时间间隔为："+peizi.自动保存时间+"秒");
                     while (true){
-                        try {
-                            sleep(peizi.自动保存时间*1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                            Bukkit.getLogger().warning("[跨服背包同步]:自动保存因为不可抗拒的原因被提前了。");
+                        for (int i = 0;i<peizi.自动保存时间;i++){
+                            try {
+                                sleep(1000);
+                            }catch(InterruptedException e){}
                         }
                         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:开始自动保存，全程异步执行，不会影响服务器tps");
                         long startTime = System.currentTimeMillis();
