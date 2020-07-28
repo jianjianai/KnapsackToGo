@@ -27,7 +27,6 @@ public class main extends Plugin implements Listener {
 
     @EventHandler
     public void onPostLogin(PostLoginEvent event) {
-        if(peizhi.后台更多信息){System.out.println("[跨服背包同步]:玩家"+event.getPlayer().getName()+"连接BC，准备连接到子服务器服务器");}
         File File = new File(peizhi.工作路径+"/锁", event.getPlayer().getName()+".yml");
         Configuration wanjiawenjian;
         try {
@@ -36,7 +35,7 @@ public class main extends Plugin implements Listener {
             if(peizhi.后台更多信息){System.out.println("[跨服背包同步]:没有找到"+peizhi.工作路径+"/锁/"+event.getPlayer().getName()+".yml文件，他一定是个新玩家吧！");}
             return;
         }
-        if(wanjiawenjian.getBoolean("已登入")){
+        if(wanjiawenjian.getBoolean("锁")){
             wanjiawenjian.set("锁",false);
             try {
                 ConfigurationProvider.getProvider(YamlConfiguration.class).save(wanjiawenjian,File);
@@ -44,10 +43,9 @@ public class main extends Plugin implements Listener {
                 e.printStackTrace();
                 getLogger().warning("[跨服背包同步]:设置玩家已登入状态为false失败，这样会导致玩家不需要登入,请检查文件读写权限或磁盘空间。");
             }
-        }
-        if(peizhi.后台更多信息){
-            System.out.println("[跨服背包同步]:已将玩家"+event.getPlayer().getName()+"的锁状态设为false");
-            System.out.println("[跨服背包同步]:为玩家"+event.getPlayer().getName()+"连接子服务器");
+            if(peizhi.后台更多信息){
+                System.out.println("[跨服背包同步]:已将玩家"+event.getPlayer().getName()+"的锁状态设为false");
+            }
         }
     }
 }
