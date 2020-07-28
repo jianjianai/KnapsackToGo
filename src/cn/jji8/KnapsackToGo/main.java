@@ -11,10 +11,13 @@ import cn.jji8.KnapsackToGo.ml.bcbb;
 import cn.jji8.KnapsackToGo.ml.jiesuo;
 import cn.jji8.KnapsackToGo.ml.jzbb;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 
 public class main extends JavaPlugin {
@@ -67,6 +70,36 @@ public class main extends JavaPlugin {
             jingyan jingyan = new jingyan();
             iodiaodu.addio(jingyan);
             Bukkit.getLogger().info("[跨服背包同步]:同步经验开启");
+        }
+        if(peizi.自动保存){
+            Thread T = new Thread(){
+                @Override
+                public void run() {
+                    Bukkit.getLogger().info("[跨服背包同步]:自动保存开启，自动保存时间间隔为："+peizi.自动保存时间+"秒");
+                    while (true){
+                        try {
+                            sleep(peizi.自动保存时间*1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            Bukkit.getLogger().warning("[跨服背包同步]:自动保存因为不可抗拒的原因被提前了。");
+                        }
+                        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:开始自动保存，全程异步执行，不会影响服务器tps");
+                        long startTime = System.currentTimeMillis();
+                        Iterator wanjia = org.bukkit.Bukkit.getOnlinePlayers().iterator();
+                        while (true){
+                            try {
+                                iodiaodu.baocun((Player) wanjia.next());
+                            }catch (NoSuchElementException a){
+                                break;
+                            }
+                        }
+                        long endTime = System.currentTimeMillis();
+                        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:所有玩家全部数据保存用时： "+(endTime-startTime)+"ns");
+                    }
+                }
+            };
+            T.setName("自动保存线程");
+            T.start();
         }
         Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
     }

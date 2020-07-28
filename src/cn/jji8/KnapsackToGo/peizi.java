@@ -8,8 +8,8 @@ import java.io.IOException;
 
 public class peizi {//我是专门负责读取配置的啦
     public String 工作路径,加载标题1,加载标题2;
-    public boolean 同步背包,背包加载前旁观者模式,进入服务器后清空背包,后台显示更多信息,同步血量饱食度,同步药水效果,同步经验;
-    public int 判读锁间隔;
+    public boolean 同步背包,背包加载前旁观者模式,进入服务器后清空背包,后台显示更多信息,同步血量饱食度,同步药水效果,同步经验,自动保存;
+    public int 判读锁间隔,自动保存时间;
     public GameMode 服务器游戏模式;
     peizi() throws IOException {
         main.main.saveResource("peizi.yml",false);
@@ -18,6 +18,20 @@ public class peizi {//我是专门负责读取配置的啦
         File File = new File(工作路径,"同步.配置.yml");
         YamlConfiguration b = YamlConfiguration.loadConfiguration(File);
 
+        if(b.contains("自动保存")){
+            自动保存 = b.getBoolean("自动保存");
+        }else {
+            b.set("自动保存",true);
+            自动保存 = true;
+            b.save(File);
+        }
+        if(b.contains("自动保存时间")){
+            自动保存时间 = b.getInt("自动保存时间");
+        }else {
+            b.set("自动保存时间",60);
+            自动保存时间 = 60;
+            b.save(File);
+        }
         if(b.contains("同步经验")){
             同步经验 = b.getBoolean("同步经验");
         }else {
