@@ -6,6 +6,7 @@ import cn.jji8.KnapsackToGo.diaoduqi.io.jingyan;
 import cn.jji8.KnapsackToGo.diaoduqi.io.xueliangbaoshidu;
 import cn.jji8.KnapsackToGo.diaoduqi.io.yaosui;
 import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
+import cn.jji8.KnapsackToGo.kongzhiqi.suoio;
 import cn.jji8.KnapsackToGo.kongzhiqi.suokongziqi;
 import cn.jji8.KnapsackToGo.ml.bcbb;
 import cn.jji8.KnapsackToGo.ml.jiesuo;
@@ -102,6 +103,23 @@ public class main extends JavaPlugin {
             T.start();
         }
         Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
+    }
+
+    public void onDisable(){
+        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:插件关闭保存玩家数据。");
+        long startTime = System.currentTimeMillis();
+        Iterator wanjia = org.bukkit.Bukkit.getOnlinePlayers().iterator();
+        while (true){
+            try {
+                Player Player = (Player) wanjia.next();
+                iodiaodu.baocun(Player);
+                suoio.jieshuo(Player.getName());
+            }catch (NoSuchElementException a){
+                break;
+            }
+        }
+        long endTime = System.currentTimeMillis();
+        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:所有玩家全部数据保存用时： "+(endTime-startTime)+"ns");
     }
 }
 
