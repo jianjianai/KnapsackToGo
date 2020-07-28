@@ -1,6 +1,6 @@
 name: KnapsackToGo
-main: cn.jji8.kuafubeibaotongbu.main
-version: 2.0
+main: cn.jji8.KnapsackToGo.main
+version: 4.2
 author: jianjianai
 api-version: 1.13
 commands:

@@ -1,15 +1,15 @@
-package cn.jji8.kuafubeibaotongbu.kongzhiqi;
+package cn.jji8.KnapsackToGo.kongzhiqi;
 
-import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.KnapsackToGo.main;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 
 import java.io.File;
 import java.io.IOException;
-
-public class suoio {//我专门负责读写操作
+/*
+* 我专门负责读写操作
+* */
+public class suoio {
     public static void jiashuo(String wanjia){
         File File = new File(main.peizi.工作路径 + "/锁/" + wanjia+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);

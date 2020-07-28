@@ -1,6 +1,6 @@
-package cn.jji8.kuafubeibaotongbu.ml;
+package cn.jji8.KnapsackToGo.ml;
 
-import cn.jji8.kuafubeibaotongbu.kongzhiqi.suoio;
+import cn.jji8.KnapsackToGo.kongzhiqi.suoio;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

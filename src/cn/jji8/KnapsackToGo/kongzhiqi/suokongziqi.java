@@ -1,7 +1,7 @@
-package cn.jji8.kuafubeibaotongbu.kongzhiqi;
+package cn.jji8.KnapsackToGo.kongzhiqi;
 
-import cn.jji8.kuafubeibaotongbu.diaoduqi.iodiaodu;
-import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
+import cn.jji8.KnapsackToGo.main;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
@@ -71,13 +71,6 @@ public class suokongziqi implements Listener {
 
     @EventHandler
     public void WanJiaYiDong(PlayerMoveEvent a){//玩家移动时
-        if(main.wanjiabiao.contains(a.getPlayer().getName())){
-            a.setCancelled(true);
-            a.getPlayer().sendTitle(main.peizi.加载标题1.replaceAll("%玩家%",a.getPlayer().getName()),main.peizi.加载标题2.replaceAll("%玩家%",a.getPlayer().getName()),10,40,10);
-        }
-    }
-    @EventHandler
-    public void wanjiachuanshong(PlayerTeleportEvent a) {//玩家传送时
         if(main.wanjiabiao.contains(a.getPlayer().getName())){
             a.setCancelled(true);
             a.getPlayer().sendTitle(main.peizi.加载标题1.replaceAll("%玩家%",a.getPlayer().getName()),main.peizi.加载标题2.replaceAll("%玩家%",a.getPlayer().getName()),10,40,10);

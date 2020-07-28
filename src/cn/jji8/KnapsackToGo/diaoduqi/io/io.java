@@ -1,4 +1,4 @@
-package cn.jji8.kuafubeibaotongbu.diaoduqi.io;
+package cn.jji8.KnapsackToGo.diaoduqi.io;
 
 
 import org.bukkit.entity.Player;

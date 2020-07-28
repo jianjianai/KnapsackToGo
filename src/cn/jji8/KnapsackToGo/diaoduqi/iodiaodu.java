@@ -1,6 +1,6 @@
-package cn.jji8.kuafubeibaotongbu.diaoduqi;
+package cn.jji8.KnapsackToGo.diaoduqi;
 
-import cn.jji8.kuafubeibaotongbu.diaoduqi.io.io;
+import cn.jji8.KnapsackToGo.diaoduqi.io.io;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;

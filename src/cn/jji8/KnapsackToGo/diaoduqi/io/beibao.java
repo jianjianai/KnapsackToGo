@@ -1,6 +1,6 @@
-package cn.jji8.kuafubeibaotongbu.diaoduqi.io;
+package cn.jji8.KnapsackToGo.diaoduqi.io;
 
-import cn.jji8.kuafubeibaotongbu.main;
+import cn.jji8.KnapsackToGo.main;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -8,10 +8,13 @@ import org.bukkit.inventory.PlayerInventory;
 
 import java.io.File;
 import java.io.IOException;
-
-public class beibao implements io{//我负责玩家背包
+/*
+* 我负责玩家背包
+* */
+public class beibao implements io{
+    //加载玩家背包
     @Override
-    public void duqu(Player wanjia) {//加载玩家背包
+    public void duqu(Player wanjia) {
         long startTime = System.currentTimeMillis();
         File File = new File(main.peizi.工作路径 + "/背包/" + wanjia.getName()+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
@@ -27,8 +30,9 @@ public class beibao implements io{//我负责玩家背包
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:背包加载用时间： "+(endTime-startTime)+"ns");
     }
+    //用于保存玩家背包
     @Override
-    public void xieru(Player wanjia){//用于保存玩家背包
+    public void xieru(Player wanjia){
         long startTime = System.currentTimeMillis();
         File File = new File(main.peizi.工作路径 + "/背包/" + wanjia.getName()+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
