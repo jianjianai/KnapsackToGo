@@ -1,10 +1,7 @@
 package cn.jji8.KnapsackToGo;
 
 
-import cn.jji8.KnapsackToGo.diaoduqi.io.beibao;
-import cn.jji8.KnapsackToGo.diaoduqi.io.jingyan;
-import cn.jji8.KnapsackToGo.diaoduqi.io.xueliangbaoshidu;
-import cn.jji8.KnapsackToGo.diaoduqi.io.yaosui;
+import cn.jji8.KnapsackToGo.diaoduqi.io.*;
 import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
 import cn.jji8.KnapsackToGo.kongzhiqi.suoio;
 import cn.jji8.KnapsackToGo.kongzhiqi.suokongziqi;
@@ -55,6 +52,11 @@ public class main extends JavaPlugin {
             beibao beibao = new beibao();
             iodiaodu.addio(beibao);
             Bukkit.getLogger().info("[跨服背包同步]:同步背包开启");
+        }
+        if(peizi.末影箱){
+            moyingxiang moyingxiang  = new moyingxiang();
+            iodiaodu.addio(moyingxiang );
+            Bukkit.getLogger().info("[跨服背包同步]:同步末影箱开启");
         }
         //同步血量饱食度控制器
         if(peizi.同步血量饱食度){
