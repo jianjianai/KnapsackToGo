@@ -8,6 +8,7 @@ import cn.jji8.KnapsackToGo.kongzhiqi.suokongziqi;
 import cn.jji8.KnapsackToGo.ml.bcbb;
 import cn.jji8.KnapsackToGo.ml.jiesuo;
 import cn.jji8.KnapsackToGo.ml.jzbb;
+import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,13 +23,14 @@ public class main extends JavaPlugin {
     public static main main;
     public static peizi peizi;
     public static ArrayList wanjiabiao = new ArrayList();
+    Metrics Metrics;
 
     public void onEnable() {
         main = this;
 
         Bukkit.getLogger().info("[跨服背包同步]:作者:简简爱");
         Bukkit.getLogger().info("[跨服背包同步]:开始初始化");
-
+        Metrics = new Metrics(this,8687);
 
         //加载配置
         try {
@@ -69,6 +71,11 @@ public class main extends JavaPlugin {
             iodiaodu.addio(yaosui);
             Bukkit.getLogger().info("[跨服背包同步]:同步药水效果开启");
         }
+        if(peizi.同步经济){
+            jingji jingji = new jingji();
+            iodiaodu.addio(jingji);
+            Bukkit.getLogger().info("[跨服背包同步]:同步经济开启");
+        }
         if(peizi.同步经验){
             jingyan jingyan = new jingyan();
             iodiaodu.addio(jingyan);
@@ -80,10 +87,16 @@ public class main extends JavaPlugin {
                 public void run() {
                     Bukkit.getLogger().info("[跨服背包同步]:自动保存开启，自动保存时间间隔为："+peizi.自动保存时间+"秒");
                     while (true){
-                        for (int i = 0;i<peizi.自动保存时间;i++){
+                        long 自动保存时间 = System.currentTimeMillis()+(peizi.自动保存时间*1000);
+                        while (true){
                             try {
                                 sleep(1000);
-                            }catch(InterruptedException e){}
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            if(System.currentTimeMillis()>=自动保存时间){
+                                break;
+                            }
                         }
                         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:开始自动保存，全程异步执行，不会影响服务器tps");
                         long startTime = System.currentTimeMillis();
