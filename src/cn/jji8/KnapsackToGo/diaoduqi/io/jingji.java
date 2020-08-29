@@ -43,13 +43,6 @@ public class jingji implements io{
             return;
         }
         double 玩家钱 = wanjiawenjian.getDouble("钱");
-
-        for(int i = 0;i<10;i++){
-            if(econ.withdrawPlayer(wanjia,econ.getBalance(wanjia)).transactionSuccess()){//扣除玩家全部的钱，成功跳出循环
-                break;
-            }
-            main.main.getLogger().info("操作玩家钱随便，尝试重新操作");
-        }
         for(int i = 0;i<10;i++){
             if(econ.depositPlayer(wanjia,玩家钱).transactionSuccess()){//将读取的钱给玩家，成功跳出循环
                 break;
@@ -70,6 +63,12 @@ public class jingji implements io{
         File File = new File(main.peizi.工作路径 + "/经济/" + wanjia.getName()+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
         wanjiawenjian.set("钱",econ.getBalance(wanjia));
+        for(int i = 0;i<10;i++){
+            if(econ.withdrawPlayer(wanjia,econ.getBalance(wanjia)).transactionSuccess()){//扣除玩家全部的钱，成功跳出循环
+                break;
+            }
+            main.main.getLogger().info("操作玩家钱随便，尝试重新操作");
+        }
         try {
             wanjiawenjian.save(File);
         } catch (IOException e) {
@@ -78,5 +77,66 @@ public class jingji implements io{
         }
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:经济保存用时： "+(endTime-startTime)+"ns");
+    }
+
+    /**
+     * 自动保存
+     * 自动保存时调用的保存方法
+     *
+     * @param wanjia
+     */
+    @Override
+    public void zidongbaocun(Player wanjia) {
+        long startTime = System.currentTimeMillis();
+        if(econ==null){
+            main.main.getLogger().warning("经济插件前置错误，取消写入");
+            return;
+        }
+        File File = new File(main.peizi.工作路径 + "/经济/" + wanjia.getName()+".yml");
+        YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
+        wanjiawenjian.set("钱",econ.getBalance(wanjia));
+        try {
+            wanjiawenjian.save(File);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Bukkit.getLogger().warning("[跨服背包同步]:经济保存失败,玩家背包未保存，请检查写入权限，或磁盘空间");
+        }
+        long endTime = System.currentTimeMillis();
+        if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:经济保存用时： "+(endTime-startTime)+"ns");
+    }
+
+    /**
+     * 非正常读取，玩家数据没有正常保存而是因为服务器崩溃退出游戏，使用自动保存的数据加载
+     *
+     * @param wanjia
+     */
+    @Override
+    public void feizhengchangduqu(Player wanjia) {
+        long startTime = System.currentTimeMillis();
+        if(econ==null){
+            main.main.getLogger().warning("经济插件前置错误，取消读取");
+            return;
+        }
+        File File = new File(main.peizi.工作路径 + "/经济/" + wanjia.getName()+".yml");
+        YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
+        if(!wanjiawenjian.contains("钱")){
+            main.main.getLogger().info("此玩家没有经济数据，暂不加载！");
+            return;
+        }
+        double 玩家钱 = wanjiawenjian.getDouble("钱");
+        for(int i = 0;i<10;i++){
+            if(econ.withdrawPlayer(wanjia,econ.getBalance(wanjia)).transactionSuccess()){//扣除玩家全部的钱，成功跳出循环
+                break;
+            }
+            main.main.getLogger().info("操作玩家钱随便，尝试重新操作");
+        }
+        for(int i = 0;i<10;i++){
+            if(econ.depositPlayer(wanjia,玩家钱).transactionSuccess()){//将读取的钱给玩家，成功跳出循环
+                break;
+            }
+            main.main.getLogger().info("操作玩家钱随便，尝试重新操作");
+        }
+        long endTime = System.currentTimeMillis();
+        if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:经济加载用时间： "+(endTime-startTime)+"ns");
     }
 }

@@ -3,6 +3,7 @@ package cn.jji8.KnapsackToGo;
 
 import cn.jji8.KnapsackToGo.diaoduqi.io.*;
 import cn.jji8.KnapsackToGo.diaoduqi.iodiaodu;
+import cn.jji8.KnapsackToGo.kongzhiqi.baocunzhong;
 import cn.jji8.KnapsackToGo.kongzhiqi.suoio;
 import cn.jji8.KnapsackToGo.kongzhiqi.suokongziqi;
 import cn.jji8.KnapsackToGo.ml.bcbb;
@@ -22,8 +23,8 @@ import java.util.NoSuchElementException;
 public class main extends JavaPlugin {
     public static main main;
     public static peizi peizi;
-    public static ArrayList wanjiabiao = new ArrayList();
     Metrics Metrics;
+    public ArrayList<Player> wanjiabiao = new ArrayList<Player>();
 
     public void onEnable() {
         main = this;
@@ -100,12 +101,10 @@ public class main extends JavaPlugin {
                         }
                         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:开始自动保存，全程异步执行，不会影响服务器tps");
                         long startTime = System.currentTimeMillis();
-                        Iterator wanjia = org.bukkit.Bukkit.getOnlinePlayers().iterator();
-                        while (true){
-                            try {
-                                iodiaodu.baocun((Player) wanjia.next());
-                            }catch (NoSuchElementException a){
-                                break;
+                        for (Player a:wanjiabiao) {
+                            if(baocunzhong.setjiazai(a)){
+                                iodiaodu.zidongbaocun(a);//调用自动保存方法
+                                baocunzhong.setjiazaiwancheng(a);
                             }
                         }
                         long endTime = System.currentTimeMillis();

@@ -45,4 +45,24 @@ public class moyingxiang implements io {
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:末影箱保存用时： "+(endTime-startTime)+"ns");
     }
+    /**
+     * 自动保存
+     * 自动保存时调用的保存方法
+     *
+     * @param wanjia
+     */
+    @Override
+    public void zidongbaocun(Player wanjia) {
+        xieru(wanjia);
+    }
+
+    /**
+     * 非正常读取，玩家数据没有正常保存而是因为服务器崩溃退出游戏，使用自动保存的数据加载
+     *
+     * @param wanjia
+     */
+    @Override
+    public void feizhengchangduqu(Player wanjia) {
+        duqu(wanjia);
+    }
 }
