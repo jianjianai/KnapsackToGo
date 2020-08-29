@@ -103,7 +103,10 @@ public class main extends JavaPlugin {
                         Iterator wanjia = org.bukkit.Bukkit.getOnlinePlayers().iterator();
                         while (true){
                             try {
-                                iodiaodu.baocun((Player) wanjia.next());
+                                Player P = (Player) wanjia.next();
+                                if(!main.wanjiabiao.contains(P.getPlayer().getName())){
+                                    iodiaodu.baocun(P);
+                                }
                             }catch (NoSuchElementException a){
                                 break;
                             }

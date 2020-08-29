@@ -5,9 +5,10 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class peizi {//我是专门负责读取配置的啦
-    public String 工作路径,加载标题1,加载标题2;
+    public String 工作路径,加载标题1,加载标题2,唯一标识符;
     public boolean 同步背包,背包加载前旁观者模式,进入服务器后清空背包,后台显示更多信息,同步血量饱食度,同步药水效果,同步经验,自动保存,末影箱,同步经济;
     public int 判读锁间隔,自动保存时间;
     public GameMode 服务器游戏模式;
@@ -15,6 +16,15 @@ public class peizi {//我是专门负责读取配置的啦
         main.main.saveResource("peizi.yml",false);
         YamlConfiguration a = YamlConfiguration.loadConfiguration(new File(main.main.getDataFolder(), "peizi.yml"));
         工作路径 = a.getString("工作路径");
+
+        if(a.contains("唯一标识符")){
+            唯一标识符 = a.getString("唯一标识符");
+        }else {
+            唯一标识符 = System.currentTimeMillis() + Long.toString(new Random().nextInt());//生成一个服务器唯一标识符
+            a.set("唯一标识符",唯一标识符);
+            a.save(new File(main.main.getDataFolder(), "peizi.yml"));
+        }
+
         File File = new File(工作路径,"同步.配置.yml");
         YamlConfiguration b = YamlConfiguration.loadConfiguration(File);
 

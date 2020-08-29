@@ -5,7 +5,6 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.io.File;
@@ -42,19 +41,21 @@ public class jingji implements io{
             main.main.getLogger().info("此玩家没有经济数据，暂不加载！");
             return;
         }
+        double 服务器钱 = econ.getBalance(wanjia);
         double 玩家钱 = wanjiawenjian.getDouble("钱");
-
+        double 上次退出时钱 = wanjiawenjian.getDouble(main.peizi.唯一标识符);
+        double 变化钱 = 服务器钱 - 上次退出时钱;
         for(int i = 0;i<10;i++){
             if(econ.withdrawPlayer(wanjia,econ.getBalance(wanjia)).transactionSuccess()){//扣除玩家全部的钱，成功跳出循环
                 break;
             }
-            main.main.getLogger().info("操作玩家钱随便，尝试重新操作");
+            main.main.getLogger().info("操作玩家钱失败，尝试重新操作");
         }
         for(int i = 0;i<10;i++){
-            if(econ.depositPlayer(wanjia,玩家钱).transactionSuccess()){//将读取的钱给玩家，成功跳出循环
+            if(econ.depositPlayer(wanjia,玩家钱+变化钱).transactionSuccess()){//将读取的钱给玩家，成功跳出循环
                 break;
             }
-            main.main.getLogger().info("操作玩家钱随便，尝试重新操作");
+            main.main.getLogger().info("操作玩家钱失败，尝试重新操作");
         }
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:经济加载用时间： "+(endTime-startTime)+"ns");
@@ -70,6 +71,7 @@ public class jingji implements io{
         File File = new File(main.peizi.工作路径 + "/经济/" + wanjia.getName()+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
         wanjiawenjian.set("钱",econ.getBalance(wanjia));
+        wanjiawenjian.set(main.peizi.唯一标识符,econ.getBalance(wanjia));
         try {
             wanjiawenjian.save(File);
         } catch (IOException e) {
