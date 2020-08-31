@@ -1,7 +1,8 @@
 name: KnapsackToGo
 main: cn.jji8.KnapsackToGo.main
-version: 5.3
+version: 5.5
 author: jianjianai
+softdepend: [Vault]
 api-version: 1.13
 commands:
   保存背包:

@@ -43,8 +43,12 @@ public class jingji implements io{
         }
         double 服务器钱 = econ.getBalance(wanjia);
         double 玩家钱 = wanjiawenjian.getDouble("钱");
-        double 上次退出时钱 = wanjiawenjian.getDouble(main.peizi.唯一标识符);
-        double 变化钱 = 服务器钱 - 上次退出时钱;
+        double 上次退出时钱;
+        double 变化钱 = 0;
+        if(wanjiawenjian.contains(main.peizi.唯一标识符)){
+            上次退出时钱 = wanjiawenjian.getDouble(main.peizi.唯一标识符);
+            变化钱 = 服务器钱 - 上次退出时钱;
+        }
         for(int i = 0;i<10;i++){
             if(econ.withdrawPlayer(wanjia,econ.getBalance(wanjia)).transactionSuccess()){//扣除玩家全部的钱，成功跳出循环
                 break;

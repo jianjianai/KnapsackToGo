@@ -11,6 +11,8 @@ import cn.jji8.KnapsackToGo.ml.jzbb;
 import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -122,6 +124,7 @@ public class main extends JavaPlugin {
         Bukkit.getLogger().info("[跨服背包同步]:初始化完成");
     }
 
+    @EventHandler(priority= EventPriority.LOWEST)
     public void onDisable(){
         if(main.peizi.后台显示更多信息)Bukkit.getLogger().info("[跨服背包同步]:插件关闭保存玩家数据。");
         long startTime = System.currentTimeMillis();
