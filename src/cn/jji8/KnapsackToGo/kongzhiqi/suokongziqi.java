@@ -14,6 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class suokongziqi implements Listener {
     @EventHandler
     public void wanjianjingru(PlayerJoinEvent a){//玩家进入时等待其他服务器解锁，然后加锁，加载背包
+        main.wanjiabiao.add(a.getPlayer().getName());
         if(main.peizi.进入服务器后清空背包){
             a.getPlayer().getInventory().clear();
         }
@@ -21,7 +22,6 @@ public class suokongziqi implements Listener {
             a.getPlayer().setGameMode(GameMode.SPECTATOR);
         }
         if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:玩家"+a.getPlayer().getName()+"进入");
-        main.wanjiabiao.add(a.getPlayer().getName());
         Thread Thread = new Thread(){
             @Override
             public void run() {

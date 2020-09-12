@@ -20,8 +20,12 @@ public class jingyan implements io {
         long startTime = System.currentTimeMillis();
         File File = new File(main.peizi.工作路径 + "/经验/" + wanjia.getName()+".yml");
         YamlConfiguration wanjiawenjian = YamlConfiguration.loadConfiguration(File);
-        wanjia.setLevel(wanjiawenjian.getInt("等级"));
-        wanjia.setExp(new BigDecimal(wanjiawenjian.getString("升级进度")).floatValue());
+        if(wanjiawenjian.contains("等级")){
+            wanjia.setLevel(wanjiawenjian.getInt("等级"));
+        }
+        if(wanjiawenjian.contains("升级进度")){
+            wanjia.setExp(new BigDecimal(wanjiawenjian.getString("升级进度")).floatValue());
+        }
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:经验加载用时间： "+(endTime-startTime)+"ns");
     }
