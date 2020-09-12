@@ -29,20 +29,4 @@ public class iodiaodu {//我专门负责调度io
             diaodubiao.get(i).xieru(a);
         }
     }
-    /**
-     * 自动保存
-     * */
-    public static void zidongbaocun(Player a){
-        for(int i=0;i<diaodubiao.size();i++){
-            diaodubiao.get(i).zidongbaocun(a);
-        }
-    }
-    /**
-     * 非正常读取，玩家数据没有正常保存而是因为服务器崩溃退出游戏，使用自动保存的数据加载
-     * */
-    public static void feizhengchangduqu(Player a){
-        for(int i=0;i<diaodubiao.size();i++){
-            diaodubiao.get(i).feizhengchangduqu(a);
-        }
-    }
 }
