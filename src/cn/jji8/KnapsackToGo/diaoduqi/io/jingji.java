@@ -49,17 +49,23 @@ public class jingji implements io{
             上次退出时钱 = wanjiawenjian.getDouble(main.peizi.唯一标识符);
             变化钱 = 服务器钱 - 上次退出时钱;
         }
+        boolean 成功 = false;
         for(int i = 0;i<10;i++){
             if(econ.withdrawPlayer(wanjia,econ.getBalance(wanjia)).transactionSuccess()){//扣除玩家全部的钱，成功跳出循环
+                成功 = true;
                 break;
             }
             main.main.getLogger().info("操作玩家钱失败，尝试重新操作");
         }
-        for(int i = 0;i<10;i++){
-            if(econ.depositPlayer(wanjia,玩家钱+变化钱).transactionSuccess()){//将读取的钱给玩家，成功跳出循环
-                break;
+        if(成功){
+            for(int i = 0;i<10;i++){
+                if(econ.depositPlayer(wanjia,玩家钱+变化钱).transactionSuccess()){//将读取的钱给玩家，成功跳出循环
+                    break;
+                }
+                main.main.getLogger().info("操作玩家钱失败，尝试重新操作");
             }
-            main.main.getLogger().info("操作玩家钱失败，尝试重新操作");
+        }else {
+            main.main.getLogger().info("操作玩家钱失败,没有完成同步");
         }
         long endTime = System.currentTimeMillis();
         if(main.peizi.后台显示更多信息) Bukkit.getLogger().info("[跨服背包同步]:经济加载用时间： "+(endTime-startTime)+"ns");
